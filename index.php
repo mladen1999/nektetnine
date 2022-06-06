@@ -3,6 +3,7 @@
 // https://zellwk.com/blog/how-to-write-mobile-first-css/ 
 // https://www.youtube.com/watch?v=-U5dEdWouDY 
 include('config/app.php');
+include('codes/authentication_code.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

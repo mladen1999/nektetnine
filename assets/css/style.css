@@ -1,7 +1,10 @@
 /* BODY */
 body {
     background-color: lightblue !important;
-    padding-bottom: 50px;
+    display: flex;
+  height: 100vh; 
+  min-height: 100px;
+  flex-direction: column;
 }
 /*================*/
 
@@ -18,9 +21,20 @@ body {
     
 }
 
+.search-container button {
+    float: right;
+    padding: 6px 100px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
 
-
-
+.search-container {
+    float: right;
+  }
 
 
 

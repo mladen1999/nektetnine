@@ -18,17 +18,31 @@
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
+      <?php if(isset($_SESSION['authenticated'])) : ?>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
+      <form action="" method="POST">
+        <button type="submit" name="logout_btn" class="btn btn-danger">Odjavite se</button> 
+      </form>
+      <?php else : ?>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="<?= base_url('register.php') ?>">Registrujte se</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('login.php') ?>">Ulogujte se</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    
+    <?php endif; ?>
+    
+
+
+
+  </div>
+  <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-  </div>
   </div>
 </nav>
