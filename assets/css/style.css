@@ -1,0 +1,77 @@
+/* BODY */
+body {
+    background-color: lightblue !important;
+    padding-bottom: 50px;
+}
+/*================*/
+
+/* BOOTSTRAP */
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
+/*================*/
+
+.asd {
+    background-color: red !important;
+}
+.carouselImages{
+    
+}
+
+
+
+
+
+
+
+@media (min-width: 539px) {
+    .carouselImages{
+        width: 100%;
+    }
+  }
+  
+@media (max-width: 415px) {
+    .carouselImages{
+        width: 100%;
+    }
+    form {
+        margin-left: 25%;
+        margin-right:25%;
+        
+    }
+    .res1 {
+
+    }
+  }
+@media (min-width: 1060px) {
+    .carouselImages{
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+    .arrow{
+        margin-left: 50px;
+        margin-right: auto;
+    }
+}
+@media (max-width: 539px) and (min-width: 279px) {
+    .center1 {
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+}
+
+/* GALAXY FOLD */
+@media (max-width: 280px) {
+    .galaxy-fold-open-your-device {
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
