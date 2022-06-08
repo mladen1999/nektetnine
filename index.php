@@ -4,6 +4,7 @@
 // https://www.youtube.com/watch?v=-U5dEdWouDY 
 include('config/app.php');
 include('codes/authentication_code.php');
+include_once('controllers/SearchController.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +64,7 @@ include('codes/authentication_code.php');
                             <option value="Srbija">Srbija</option>
                             <option value="CrnaGora">Crna Gora</option>
                         </select>
+                        
                     </div>
                 </div>
             </div>
@@ -85,7 +87,7 @@ include('codes/authentication_code.php');
                         <label for="prodaja">m² max</label><br>
                         <input class="form-control" type="number" id="kvadraturaMax" name="kvadraturaMax" value="kvadraturaMax">
                     </div>
-                    <div class="col-sm pt-2">
+                    <div class="col-sm pt-2 pb-5">
                         <label for="prodaja"></label><br>
                         <input type="submit" class="btn btn-warning w-100" name="submit">
                     </div>
@@ -95,9 +97,32 @@ include('codes/authentication_code.php');
 
 
         </form>
+
+
+        <?php
+        if(isset($_POST['search_btn'])){
+            $search = new SearchController;
+            $result = $search->index();
+            if($result) {
+                foreach($result as $row){
+                   ?>
+
+                <td><?= $row['drzava'] ?></td>
+
+
+        <?php 
+                }
+            } else {
+                    echo "Taj podatak ne postoji u bazi!";
+            } }
+        ?>
+
     </div>
     
 </body>
+<?php
+include("imports/footer.php");
+?>
 </html>
 
 <?php
@@ -118,7 +143,7 @@ if (isset($_POST["submit"])) {
     $minCena = $_POST["cenaMin"];
     $maxCena = $_POST["cenaMax"];
     $drzava = $_POST["drzavaNek"];
-    $sql = "SELECT * FROM nekretnina_prodaja WHERE tip='$tip' AND drzava='$drzava' AND minCena BETWEEN $minCena AND $maxCena ";
+    $sql = "SELECT * FROM nekretnina_prodaja WHERE tip='$tip' AND drzava='$drzava' AND minCena BETWEEN $minCena AND $maxCena";
     $result = mysqli_query($data,$sql);
     ?>
     <div class="container pt-5">

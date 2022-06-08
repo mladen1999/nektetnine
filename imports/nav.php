@@ -32,17 +32,26 @@
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('login.php') ?>">Ulogujte se</a>
       </li>
+      <?php endif; ?>
+      <div class="divvv">
+      <form action="" method="POST" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" name="search1" id="search1" type="text" placeholder="Search" aria-label="Search">
+      <button type="submit" name="search_btn" class="btn btn-danger">Pretrazi</button> 
+    </form>
+      </div>
     </ul>
     
-    <?php endif; ?>
     
-
+    
 
 
   </div>
-  <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+  <!--
+  <form class="form-inline my-2 my-lg-0" action="" method="POST">
+    <input class="form-control mr-sm-2" name="search1" id="search1" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" name="search_btn" type="submit">Search</button>
+  </form>
+      -->
+  
   </div>
 </nav>

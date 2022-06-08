@@ -2,9 +2,12 @@
 body {
     background-color: lightblue !important;
     display: flex;
-  height: 100vh; 
-  min-height: 100px;
-  flex-direction: column;
+    height: 100vh; 
+    min-height: 100px;
+    flex-direction: column;
+}
+footer {
+    margin-top: 120px;
 }
 /*================*/
 
@@ -42,21 +45,32 @@ body {
     .carouselImages{
         width: 100%;
     }
+    .divvv{
+        position: absolute; /*or fixed*/
+        right: 20%;
+      }
   }
-  
+  @media (min-width: 900px) {
+    .carouselImages{
+        width: 100%;
+    }
+    .divvv{
+        position: absolute; /*or fixed*/
+        right: 20%;
+      }
+  } 
 @media (max-width: 415px) {
     .carouselImages{
         width: 100%;
     }
     form {
-        margin-left: 25%;
-        margin-right:25%;
         
     }
-    .res1 {
+    .formS {
 
     }
   }
+  
 @media (min-width: 1060px) {
     .carouselImages{
         display: block;
