@@ -19,7 +19,7 @@ if(isset($_POST['login_btn'])){
     $checkLogin = $auth->userLogin($email, $password);
     if($checkLogin) {
         if($_SESSION['auth_role'] == '1') {
-            redirect("Uspesno ste se ulogovali", "admin/adminIndex.php");
+            redirect("Uspesno ste se ulogovali", "admin/add-house.php");
         } else {
             redirect("Uspesno ste se ulogovali", "index.php");
         }

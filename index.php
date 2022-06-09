@@ -2,16 +2,18 @@
 // https://www.nekretnine.rs/ 
 // https://zellwk.com/blog/how-to-write-mobile-first-css/ 
 // https://www.youtube.com/watch?v=-U5dEdWouDY 
+// https://www.youtube.com/c/FundaofWebITHindi/playlists
+// https://www.youtube.com/watch?v=Lvw5yf0L2GQ&list=PLGqfsP66ZtnwBtyWMA70GttxKeSb9xl2J
 include('config/app.php');
 include('codes/authentication_code.php');
 include_once('controllers/SearchController.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
     <?php include("imports/header.php"); ?>
     <?php include("imports/nav.php"); ?>
-</head>
+
 <body>
 
     <div class="container">
@@ -39,28 +41,33 @@ include_once('controllers/SearchController.php');
 
         <hr>
         <!-- -->
+        <?php include('message.php'); ?>
         <form action="" method="POST">
             
             <div class="container">
                 <div class="row res1">
                     <div class="col-sm">
-                        <input type="radio" id="radioProdaja" name="radioButton" value="Prodaja">
-                        <label for="prodaja">Prodaja</label><br>
-                        <input type="radio" id="radioIzdavanje" name="radioButton" value="Izdavanje">
-                        <label for="izdavanje">Izdavanje</label><br>
+                        <div>Tip</div>
+                        <!-- <select name="kategorijaNek" class="form-select form-control" aria-label="Default select example" required> -->
+                        <select name="tipNek" class="form-select form-control" required>
+                            <option selected value="">Tip</option>
+                            <option value="Prodaja">Prodaja</option>
+                            <option value="Iznajmljivanje">Iznajmljivanje</option>
+                        </select>
                     </div>
                     <div class="col-sm">
                         <div>Kategorija</div>
-                        <select name="kategorijaNek" class="form-select form-control" aria-label="Default select example">
-                            <option selected>Kategorija</option>
-                            <option value="Kuce">Kuce</option>
-                            <option value="Stanovi">Stanovi</option>
+                        <!-- <select name="kategorijaNek" class="form-select form-control" aria-label="Default select example" required> -->
+                        <select name="kategorijaNek" class="form-select form-control" required>
+                            <option selected value="">Kategorija</option>
+                            <option value="Kuca">Kuce</option>
+                            <option value="Stan">Stanovi</option>
                         </select>
                     </div>
                     <div class="col-sm">
                     <div>Drzava</div>
-                        <select name="drzavaNek" class="form-select form-control" aria-label="Default select example">
-                            <option selected>Drzava</option>
+                        <select name="drzavaNek" class="form-select form-control" aria-label="Default select example" required>
+                            <option selected value="">Drzava</option>
                             <option value="Srbija">Srbija</option>
                             <option value="CrnaGora">Crna Gora</option>
                         </select>
@@ -73,19 +80,19 @@ include_once('controllers/SearchController.php');
                 <div class="row">
                     <div class="col-sm">
                         <label for="prodaja">Cena min</label><br>
-                        <input class="form-control" type="number" id="cenaMin" name="cenaMin" value="cenaMin">
+                        <input class="form-control" type="number" id="cenaMin" name="cenaMin" value="cenaMin" required>
                     </div>
                     <div class="col-sm">
                         <label for="prodaja">Cena max</label><br>
-                        <input class="form-control" type="number" id="cenaMax" name="cenaMax" value="cenaMax">
+                        <input class="form-control" type="number" id="cenaMax" name="cenaMax" value="cenaMax" required>
                     </div>
                     <div class="col-sm">
                         <label for="prodaja">m² min</label><br>
-                        <input class="form-control" type="number" id="kvadraturaMin" name="kvadraturaMin" value="kvadraturaMin">
+                        <input class="form-control" type="number" id="kvadraturaMin" name="kvadraturaMin" value="kvadraturaMin" required>
                     </div>
                     <div class="col-sm">
                         <label for="prodaja">m² max</label><br>
-                        <input class="form-control" type="number" id="kvadraturaMax" name="kvadraturaMax" value="kvadraturaMax">
+                        <input class="form-control" type="number" id="kvadraturaMax" name="kvadraturaMax" value="kvadraturaMax" required>
                     </div>
                     <div class="col-sm pt-2 pb-5">
                         <label for="prodaja"></label><br>
@@ -119,11 +126,7 @@ include_once('controllers/SearchController.php');
 
     </div>
     
-</body>
-<?php
-include("imports/footer.php");
-?>
-</html>
+
 
 <?php
 
@@ -139,21 +142,26 @@ if($data===false){
 }
 
 if (isset($_POST["submit"])) {
-    $tip = $_POST["radioButton"];
+    //error_reporting(0);
+    $tip = $_POST["tipNek"];
     $minCena = $_POST["cenaMin"];
     $maxCena = $_POST["cenaMax"];
     $drzava = $_POST["drzavaNek"];
-    $sql = "SELECT * FROM nekretnina_prodaja WHERE tip='$tip' AND drzava='$drzava' AND minCena BETWEEN $minCena AND $maxCena";
+    $kategorijaK = $_POST["kategorijaNek"];
+
+    //$sql = "SELECT * FROM nekretnina_prodaja WHERE tip='$tip' AND drzava='$drzava' AND minCena BETWEEN $minCena AND $maxCena";
+    $sql = "SELECT * FROM houses WHERE tip='$tip' AND kategorija='$kategorijaK' AND drzava='$drzava' AND cena BETWEEN $minCena AND $maxCena";
+    
     $result = mysqli_query($data,$sql);
     ?>
-    <div class="container pt-5">
+    <div class="container w-100 pt-5">
     <?php
             while($rows=mysqli_fetch_assoc($result)){
         ?>
         
-        <div class="container galaxy-fold-open-your-device">
+        <div class=" galaxy-fold-open-your-device pb-5">
             <div class="card center1 " style="width: 18rem;">
-                <img class="card-img-top" src="assets/images/houses/house1.png" alt="Card image cap">
+                <img class="card-img-top" src="uploads/<?php echo $rows['slika'] ?>" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $rows['slika']; ?></h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -161,6 +169,7 @@ if (isset($_POST["submit"])) {
                 </div>
             </div>
         </div>
+    </div>
     <?php
           }
         ?>
@@ -168,3 +177,9 @@ if (isset($_POST["submit"])) {
 }
 ?>
 
+
+</body>
+<?php
+include("imports/footer.php");
+?>
+</html>

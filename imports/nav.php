@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="<?= base_url('index.php') ?>">
     <img src="<?php base_url('assets/images/nekretnine.png') ?>" width="30" height="30" class="d-inline-block align-top" alt="Nekretnine">
     Nekretnine
   </a>
@@ -34,10 +34,10 @@
       </li>
       <?php endif; ?>
       <div class="divvv">
-      <form action="" method="POST" class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" name="search1" id="search1" type="text" placeholder="Search" aria-label="Search">
-      <button type="submit" name="search_btn" class="btn btn-danger">Pretrazi</button> 
-    </form>
+        <form action="" method="POST" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" name="search1" id="search1" type="text" placeholder="Search" aria-label="Search">
+          <button type="submit" name="search_btn" class="btn btn-danger">Pretrazi</button> 
+        </form>
       </div>
     </ul>
     

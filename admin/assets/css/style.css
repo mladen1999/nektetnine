@@ -1,0 +1,105 @@
+/* BODY */
+body {
+    background-color: lightblue !important;
+    display: flex;
+    height: 100vh; 
+    min-height: 100px;
+    flex-direction: column;
+}
+footer {
+    margin-top: 120px;
+}
+/*================*/
+
+/* BOOTSTRAP */
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
+/*================*/
+
+.asd {
+    background-color: red !important;
+}
+.carouselImages{
+    
+}
+
+.search-container button {
+    float: right;
+    padding: 6px 100px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+
+.search-container {
+    float: right;
+  }
+
+
+
+@media (min-width: 539px) {
+    .carouselImages{
+        width: 100%;
+    }
+    .divvv{
+        position: absolute; /*or fixed*/
+        right: 20%;
+      }
+  }
+  @media (min-width: 900px) {
+    .carouselImages{
+        width: 100%;
+    }
+    .divvv{
+        position: absolute; /*or fixed*/
+        right: 20%;
+      }
+  } 
+@media (max-width: 415px) {
+    .carouselImages{
+        width: 100%;
+    }
+    form {
+        
+    }
+    .formS {
+
+    }
+  }
+  
+@media (min-width: 1060px) {
+    .carouselImages{
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+    .arrow{
+        margin-left: 50px;
+        margin-right: auto;
+    }
+}
+@media (max-width: 539px) and (min-width: 279px) {
+    .center1 {
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+}
+
+/* GALAXY FOLD */
+@media (max-width: 280px) {
+    .galaxy-fold-open-your-device {
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+

@@ -15,7 +15,7 @@ class AuthenticationController {
         if($result->num_rows == 1) {
             return true;
         } else {
-            redirect("Vi niste admin!", "index.php");
+            redirect("Vi niste admin!", "add-house.php");
         }
     }
 
