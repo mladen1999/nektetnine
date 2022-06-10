@@ -74,8 +74,8 @@ class HouseController{
     }
 
     public function edit($id){
-        $playerId = validateInput($this->conn, $id);
-        $playerQuery = "SELECT * FROM players WHERE id='$playerId' LIMIT 1";
+        $houseId = validateInput($this->conn, $id);
+        $playerQuery = "SELECT * FROM houses WHERE id='$houseId' LIMIT 1";
         $result = $this->conn->query($playerQuery);
         if($result->num_rows == 1){
             $data = $result->fetch_assoc();
@@ -84,16 +84,22 @@ class HouseController{
             return false;
         }
     }
-/*
+
     public function update($inputData, $id) {
-        $playerId = validateInput($this->conn, $id);
-        $firstname = $inputData['fisrtName'];
-        $lastname = $inputData['lastName'];
-        $country = $inputData['country'];
-        $age = $inputData['age'];
+        $houseId = validateInput($this->conn, $id);
+        $tipP = $inputData['tipP'];
+        $kategorijaP = $inputData['kategorijaP'];
+        $drzavaP = $inputData['drzavaP'];
+        $cenaP = $inputData['cenaP'];
+        $kvadraturaP = $inputData['kvadraturaP'];
         $image = $inputData['player_image'];
-        $playerUpdateQuery = "UPDATE players SET ime='$firstname', prezime='$lastname', poreklo='$country', godine='$age', images='$image' WHERE id='$playerId' LIMIT 1";
+        $playerUpdateQuery = "UPDATE houses SET id='$houseId', tip='$tipP', kategorija='$kategorijaP', drzava='$drzavaP', cena='$cenaP', kvadratura='$kvadraturaP', slika='$image' WHERE id='$houseId' LIMIT 1";
+        //$playerUpdateQuery = "UPDATE houses SET id='houseId', tip='$tip', "
+        //$playerUpdateQuery = "DELETE FROM houses WHERE id='$houseId' LIMIT 1";
+        //echo $playerUpdateQuery;
+        //exit();
         $result = $this->conn->query($playerUpdateQuery);
+        
         if($result) {
             
             return true;
@@ -112,7 +118,7 @@ class HouseController{
             return false;
         }
     }
-    */
+    
 }
 
 ?>

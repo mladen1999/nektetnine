@@ -14,33 +14,37 @@ if(isset($_POST['delete_btn'])) {
 }
 
 if(isset($_POST['update_player'])){
-    $id = validateInput($db->conn,$_POST['playerId']);
+    $id = validateInput($db->conn,$_POST['houseId']);
     $inputData = [
-        'fisrtName' => validateInput($db->conn,$_POST['fisrtName']),
-        'lastName' => validateInput($db->conn,$_POST['lastName']),
-        'country' => validateInput($db->conn,$_POST['country']),
-        'age' => validateInput($db->conn,$_POST['age']),
+        'tipP' => validateInput($db->conn,$_POST['tipP']),
+        'kategorijaP' => validateInput($db->conn,$_POST['kategorijaP']),
+        'drzavaP' => validateInput($db->conn,$_POST['drzavaP']),
+        'cenaP' => validateInput($db->conn,$_POST['cenaP']),
+        'kvadraturaP' => validateInput($db->conn,$_POST['kvadraturaP']),
         'player_image' => validateInput($db->conn,$_FILES['player_image']['name']),
-                
+        
     ];
     
     $allow_extension = array('gif', 'png', 'jpg', 'jpeg');
     $filename = $_FILES['player_image']['name'];
     $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
     if(!in_array($file_extension, $allow_extension)) {
-        redirect ("Mozete koristiti sledece formate: jpg, png, jpeg i gif !", "admin/edit-player.php?id=$id");
+        redirect ("Mozete koristiti sledece formate: jpg, png, jpeg i gif !", "admin/edit-house.php?id=$id");
     } else {
         if(file_exists("../uploads/" . $_FILES['player_image']['name'])) {
             $filename = $_FILES['player_image']['name'];
-            redirect ("Slika ".$filename." vec postoji!", "admin/edit-player.php?id=$id");
+            redirect ("Slika ".$filename." vec postoji!", "admin/edit-house.php?id=$id");
         } else {
             $player = new HouseController;
             $result = $player->update($inputData, $id);
+            //echo $result;
+            //exit();
             if($result) {
                 move_uploaded_file($_FILES["player_image"]["tmp_name"], "../uploads/".$_FILES["player_image"]["name"]);
-                redirect("Podaci su uspesno izmenjeni!", "admin/player-list.php");
+                redirect("Podaci su uspesno izmenjeni!", "index.php");
             } else {
-                redirect("Doslo je do greske!", "admin/player-list.php");
+                redirect("Doslo je do greske!", "admin/edit-house.php");
+                
             }
         }
     }
@@ -49,7 +53,7 @@ if(isset($_POST['update_player'])){
 
 if(isset($_POST['save_player'])){
     $inputData = [
-        'tip' => validateInput($db->conn,$_POST['tipP']),
+        'P' => validateInput($db->conn,$_POST['tipP']),
         'kategorija' => validateInput($db->conn,$_POST['kategorijaP']),
         'drzava' => validateInput($db->conn,$_POST['drzavaP']),
         'cena' => validateInput($db->conn,$_POST['cenaP']),
