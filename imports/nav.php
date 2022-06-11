@@ -13,10 +13,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">Hidden brand</a>
+    <a class="navbar-brand" href="#">Nekretnine</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <?php if(isset($_SESSION['authenticated'])) {
+              if($_SESSION['auth_role'] == 1) {
+                ?>
+                  <a class="nav-item nav-link" href="<?= base_url('admin/add-house.php') ?>">Dodaj kucu</a>
+                  <a class="nav-item nav-link" href="<?= base_url('admin/houses-list.php') ?>">Lista svih kuca</a>
+                <?php
+                  }
+                }
+              ?>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?= base_url('index.php') ?>">Pocetna strana <span class="sr-only">(current)</span></a>
       </li>
       <?php if(isset($_SESSION['authenticated'])) : ?>
       <li class="nav-item">

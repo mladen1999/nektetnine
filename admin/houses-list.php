@@ -19,23 +19,28 @@ include("../imports/nav.php");
                 <?php include('../message.php'); ?>
                 <div class="card">
                     <div class="card-header">
-                        <h4>Lista igraca</h4>
+                        <h4>Lista kuca</h4>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Slika</th>
-                                    <th>ID</th>
-                                    <th>Ime</th>
-                                    <th>Prezime</th>
-                                    <th>Poreklo</th>
-                                    <th>Godine</th>
-                                    <th>Izmeni</th>
-                                    <th>Obrisi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    
+
+                        <!-- -->
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Slika</th>
+                                        <th>ID</th>
+                                        <th>Tip</th>
+                                        <th>Kategorija</th>
+                                        <th>Drzava</th>
+                                        <th>Cena</th>
+                                        <th>Kvadratura</th>
+                                        <th>Izmeni</th>
+                                        <th>Obrisi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
                                 <?php
                                     $players = new HouseController;
                                     $result = $players->index();
@@ -56,11 +61,11 @@ include("../imports/nav.php");
                                                 <td><?= $row['cena'] ?></td>
                                                 <td><?= $row['kvadratura'] ?></td>
                                                 <td>
-                                                    <a href="edit-player.php?id=<?= $row['id'] ?>" class="btn btn-primary">Izmeni</a>
+                                                    <a href="edit-house.php?id=<?= $row['id'] ?>" class="btn btn-primary">Izmeni</a>
                                                 </td>
                                                 <td>
                                                     <!-- <a href="" class="btn btn-danger">Obrisi</a> -->
-                                                    <form action="codes/player.php" method="POST">
+                                                    <form action="codes/house.php" method="POST">
                                                         <button type="submit" name="delete_btn" value="<?= $row['id'] ?>" class="btn btn-danger">Obrisi</button>
                                                     </form>
                                                 </td>
@@ -69,12 +74,14 @@ include("../imports/nav.php");
                                            <?php 
                                         }
                                     } else {
-                                        echo "Nema igraca u bazi!";
+                                        echo "Nema kuca u bazi!";
                                     }
                                 ?>
-                                
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- -->
                     </div>
                 </div>
             </div>

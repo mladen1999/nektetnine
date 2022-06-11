@@ -31,8 +31,8 @@ include_once('controllers/HouseController.php');
                         <?php
                             if(isset($_GET['id'])){
                                 $houseId = validateInput($db->conn, $_GET['id']);
-                                $player = new HouseController;
-                                $result = $player->edit($houseId);
+                                $house = new HouseController;
+                                $result = $house->edit($houseId);
                                 if($result){
                                     ?>
                                 
@@ -61,20 +61,24 @@ include_once('controllers/HouseController.php');
                                 <input type="number" name="kvadraturaP" value="<?= $result['kvadratura']; ?>" class="form-control" required />
                             </div>
                             <div class="mb-3">
+                                <label for="">Dodaj opis kuce:</label>
+                                <input type="text" name="opisP" value="<?= $result['opis']; ?>" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
                                 <label for="">Izaberite sliku:</label>
-                                <input type="file" name="player_image" class="form-control" accept="image/*">
-                                <input type="text" name="player_image_old" value="<?= $result['slika']; ?>" class="form-control"  />
+                                <input type="file" name="house_image" class="form-control" accept="image/*">
+                                <input type="text" name="house_image_old" value="<?= $result['slika']; ?>" class="form-control"  />
                             </div>
                             <div class="mb-3 ml-3">
                                 <label>Slika kuce:</label><br />
-                                <img src="../uploads/<?= $result['slika']; ?>" width = 100 height = 100 alt="image">            
+                                <img src="uploads/<?= $result['slika']; ?>" width = 100 height = 100 alt="image">            
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="update_player" class="btn btn-primary mr-5">Izmeni kucu</button>
+                                <button type="submit" name="update_house" class="btn btn-primary mr-5">Izmeni kucu</button>
 
                                 <input type="hidden" name="detele_id" value="<?=$result['id'];?>">
-                                <input type="hidden" name="del_player_image" value="<?= $result['slika']; ?>">
-                                <button type="submit" name="delete_player_image" class="btn btn-danger">Izbrisi sliku kuce</button>
+                                <input type="hidden" name="del_house_image" value="<?= $result['slika']; ?>">
+                                <button type="submit" name="delete_house_image" class="btn btn-danger">Izbrisi sliku kuce</button>
                             </div>
                         </form>
 

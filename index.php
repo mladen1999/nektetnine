@@ -114,7 +114,20 @@ include_once('controllers/SearchController.php');
                 foreach($result as $row){
                    ?>
 
-                <td><?= $row['drzava'] ?></td>
+            <div class="col galaxy-fold-open-your-device pb-5">
+                <div class="card center1 " style="width: 18rem;">
+                    <img class="card-img-top" src="admin/uploads/<?php echo $row['slika'] ?>" alt="Card image cap">
+                    <div class="card-body">
+                        <td>
+                            <a href="admin/edit-house.php?id=<?= $row['id'] ?>" class="btn btn-primary">Izmeni</a>
+                            
+                        </td>
+                        <h5 class="card-title"><?php echo $row['slika']; ?></h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
 
 
         <?php 
@@ -148,9 +161,11 @@ if (isset($_POST["submit"])) {
     $maxCena = $_POST["cenaMax"];
     $drzava = $_POST["drzavaNek"];
     $kategorijaK = $_POST["kategorijaNek"];
+    $kvadraturaMin = $_POST["kvadraturaMin"];
+    $kvadraturaMax = $_POST["kvadraturaMax"];
 
     //$sql = "SELECT * FROM nekretnina_prodaja WHERE tip='$tip' AND drzava='$drzava' AND minCena BETWEEN $minCena AND $maxCena";
-    $sql = "SELECT * FROM houses WHERE tip='$tip' AND kategorija='$kategorijaK' AND drzava='$drzava' AND cena BETWEEN $minCena AND $maxCena";
+    $sql = "SELECT * FROM houses WHERE tip='$tip' AND kategorija='$kategorijaK' AND drzava='$drzava' AND cena BETWEEN $minCena AND $maxCena AND kvadratura BETWEEN $kvadraturaMin AND $kvadraturaMax";
     
     $result = mysqli_query($data,$sql);
     ?>
@@ -161,25 +176,23 @@ if (isset($_POST["submit"])) {
         
         <div class=" galaxy-fold-open-your-device pb-5">
             <div class="card center1 " style="width: 18rem;">
-                <img class="card-img-top" src="uploads/<?php echo $rows['slika'] ?>" alt="Card image cap">
+                <img class="card-img-top" src="admin/uploads/<?php echo $rows['slika'] ?>" alt="Card image cap">
                 <div class="card-body">
-                    <td>
-                        <a href="admin/edit-house.php?id=<?= $rows['id'] ?>" class="btn btn-primary">Izmeni</a>
-                        
-                    </td>
-                    <h5 class="card-title"><?php echo $rows['slika']; ?></h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    
+                    <h5 class="card-title"><?php echo $rows['kategorija']; ?></h5>
+                    <p class="card-text"><?php echo $rows['opis']; ?></p>
+                    <a href="#" class="btn btn-primary">Pogledaj kucu</a>
                 </div>
             </div>
         </div>
-    </div>
-    <?php
+        <?php
           }
         ?>
     <?php
 }
 ?>
+    </div>
+    
 
 
 </body>

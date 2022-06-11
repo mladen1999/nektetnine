@@ -34,7 +34,7 @@ include_once('../controllers/SearchController.php');
                                 <input type="text" name="kategorijaP" class="form-control" required />
                             </div>
                             <div class="mb-3">
-                                <label for="">PorekDrzavalo:</label>
+                                <label for="">Drzava:</label>
                                 <input type="text" name="drzavaP" class="form-control" required />
                             </div>
                             <div class="mb-3">
@@ -46,8 +46,12 @@ include_once('../controllers/SearchController.php');
                                 <input type="text" name="kvadraturaP" class="form-control" required />
                             </div>
                             <div class="mb-3">
+                                <label for="">Dodaj opis kuce:</label>
+                                <input type="text" name="opisP" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
                                 <label for="">Izaberite sliku:</label>
-                                <input type="file" name="player_image" class="form-control" accept="image/*">
+                                <input type="file" name="house_image" class="form-control" accept="image/*">
                             </div>
                             <div class="mb-3">
                                 <button type="submit" name="save_player" class="btn btn-primary">Dodaj kucu</button>
