@@ -108,6 +108,7 @@ include_once('controllers/SearchController.php');
 
         <?php
         if(isset($_POST['search_btn'])){
+            
             $search = new SearchController;
             $result = $search->index();
             if($result) {

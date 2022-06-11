@@ -78,7 +78,7 @@ include_once('controllers/HouseController.php');
 
                                 <input type="hidden" name="detele_id" value="<?=$result['id'];?>">
                                 <input type="hidden" name="del_house_image" value="<?= $result['slika']; ?>">
-                                <button type="submit" name="delete_house_image" class="btn btn-danger">Izbrisi sliku kuce</button>
+                                <button type="submit" name="delete_house_image" class="btn btn-danger odstojanje">Izbrisi sliku kuce</button>
                             </div>
                         </form>
 

@@ -13,27 +13,53 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">Nekretnine</a>
+    <a class="navbar-brand" href="<?= base_url('index.php') ?>">Nekretnine</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <?php if(isset($_SESSION['authenticated'])) {
+      <!--
+      <li class="nav-item active">
+        <a class="nav-link" href="<?= base_url('index.php') ?>">Pocetna strana <span class="sr-only">(current)</span></a>
+      </li>
+      -->
+      <?php if(isset($_SESSION['authenticated'])) : ?>
+        <?php if(isset($_SESSION['authenticated'])) {
               if($_SESSION['auth_role'] == 1) {
                 ?>
-                  <a class="nav-item nav-link" href="<?= base_url('admin/add-house.php') ?>">Dodaj kucu</a>
-                  <a class="nav-item nav-link" href="<?= base_url('admin/houses-list.php') ?>">Lista svih kuca</a>
+                  <div class="dropdown show mr-1">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      ADMIN KOMANDE
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="<?= base_url('admin/add-house.php') ?>">Dodaj kucu</a>
+                      <a class="dropdown-item"  href="<?= base_url('admin/houses-list.php') ?>">Lista svih kuca</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+
+
+      
+                  
                 <?php
                   }
                 }
               ?>
-      <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('index.php') ?>">Pocetna strana <span class="sr-only">(current)</span></a>
+      <li class="nav-item mr-1">
+        <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?= $_SESSION['auth_user']['user_email'] ?>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <form action="" method="POST">
+              <button type="submit" name="logout_btn" class="dropdown-item">Odjavite se</button> 
+            </form>
+          </div>
+          </div>
       </li>
-      <?php if(isset($_SESSION['authenticated'])) : ?>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <form action="" method="POST">
-        <button type="submit" name="logout_btn" class="btn btn-danger">Odjavite se</button> 
-      </form>
+      
+      
       <?php else : ?>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url('register.php') ?>">Registrujte se</a>
@@ -53,7 +79,6 @@
     
     
 
-
   </div>
   <!--
   <form class="form-inline my-2 my-lg-0" action="" method="POST">
@@ -64,3 +89,4 @@
   
   </div>
 </nav>
+

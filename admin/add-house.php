@@ -1,8 +1,11 @@
 <?php
 include('../config/app.php');
 include_once('../controllers/SearchController.php');
+include('../controllers/AuthenticationController.php');
+include_once('codes/authentication.php');
 
-
+$authenticated = new AuthenticationController;
+$authenticated->admin();
 
 ?>
 <!DOCTYPE html>
