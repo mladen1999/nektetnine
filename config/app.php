@@ -15,6 +15,11 @@ function base_url($slug){
     echo SITE_URL.$slug;
 }
 
+function isHomepage() {
+    $page = basename($_SERVER['PHP_SELF']);
+    return $page === 'index.php';
+  }
+
 function redirect($message, $page){
     $redirectTo = SITE_URL.$page;
     $_SESSION['message'] = "$message";

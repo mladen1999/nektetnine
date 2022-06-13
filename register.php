@@ -1,6 +1,7 @@
 <?php
 include('config/app.php');
 include('codes/authentication_code.php');
+include('codes/search.php');
 $auth->isLoggedIn();
 
 include("imports/header.php");

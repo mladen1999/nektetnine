@@ -1,5 +1,4 @@
 <?php
-
 class SearchController{
     public function __construct(){
         $db = new DatabaseConnection;
@@ -11,12 +10,16 @@ class SearchController{
         $tip = $_POST["search1"];
         $playerQuery = "SELECT * FROM houses WHERE tip='$tip' OR kategorija='$tip' OR drzava='$tip'";
         $result = $this->conn->query($playerQuery);
+        
         if($result->num_rows > 0) {
-            
+            //redirect(" ", "index.php");
+            //redirect(" ", "index.php");
             return $result;
+            
         } else {
             return false;
         }
+        
     }
 
 

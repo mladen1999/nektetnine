@@ -78,7 +78,7 @@ if(isset($_POST['delete_house_image'])) {
     $del_house_image = $_POST['del_house_image'];
     $sql = "UPDATE houses SET slika='nekretnine.png' WHERE id='$id' ";
     $query = mysqli_query($db->conn, $sql);
-    $nop = 'noprofil.jpg';
+    $nop = 'nekretnine.png';
     if($query && $del_house_image!=$nop) {
         unlink("../uploads/".$del_house_image);
         redirect ("Slika je izbisana", "admin/edit-house.php?id=$id");
