@@ -59,7 +59,7 @@ if(isset($_POST['save_player'])){
         'cena' => validateInput($db->conn,$_POST['cenaP']),
         'kvadratura' => validateInput($db->conn,$_POST['kvadraturaP']),
         'house_image' => validateInput($db->conn,$_FILES['house_image']['name']),
-        
+        'opis' => validateInput($db->conn,$_POST['opisP']),
     ];
 
     $house = new HouseController;
@@ -67,7 +67,7 @@ if(isset($_POST['save_player'])){
     //echo $result;
     if($result) {
         move_uploaded_file($_FILES["house_image"]["tmp_name"], "../uploads/".$_FILES["house_image"]["name"]);
-        redirect("Igrac je uspesno dodat!", "admin/houses-list.php");
+        redirect("Kuca je uspesno dodata!", "admin/houses-list.php");
     } else {
         redirect("Doslo je do greske!", "admin/houses-list.php");
     }

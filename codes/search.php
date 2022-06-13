@@ -14,13 +14,9 @@ include_once('controllers/SearchController.php');
                 <div class="card center1 " style="width: 18rem;">
                     <img class="card-img-top" src="admin/uploads/<?php echo $row['slika'] ?>" alt="Card image cap">
                     <div class="card-body">
-                        <td>
-                            <a href="admin/edit-house.php?id=<?= $row['id'] ?>" class="btn btn-primary">Izmeni</a>
-                            
-                        </td>
-                        <h5 class="card-title"><?php echo $row['slika']; ?></h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title"><?php echo $row['kategorija']; ?></h5>
+                        <p class="card-text"><?php echo $row['opis']; ?></p>
+                        <a href="admin/see-house.php?id=<?= $row['id'] ?>" class="btn btn-primary">Pogledaj detaljnije</a>
                     </div>
                 </div>
             </div>
