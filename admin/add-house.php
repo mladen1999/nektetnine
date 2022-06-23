@@ -57,7 +57,7 @@ $authenticated->admin();
                                 <input type="file" name="house_image" class="form-control" accept="image/*">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="save_player" class="btn btn-primary">Dodaj kucu</button>
+                                <button type="submit" name="save_house" class="btn btn-primary">Dodaj kucu</button>
                             </div>
                         </form>
                     </div>

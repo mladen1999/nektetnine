@@ -1,0 +1,199 @@
+https://css-tricks.com/creating-a-modal-image-gallery-with-bootstrap-components/
+
+https://www.youtube.com/watch?v=VWcuLqWydNY
+
+https://www.youtube.com/watch?v=vlDzYIIOYmM
+
+https://www.w3schools.com/howto/howto_js_lightbox.asp
+
+https://programmierfrage.com/items/pass-php-variable-to-bootstrap-modal
+
+https://css-tricks.com/creating-a-modal-image-gallery-with-bootstrap-components/
+
+https://gist.github.com/abr4xas/235d76cf3afa2bc1bf3cd59ca4b36193
+
+https://programmierfrage.com/items/how-can-i-fill-up-a-bootstrap-carousel-with-images-from-database
+
+<button type="button" class="" data-toggle="modal" data-target="#message<?php echo $row['id'];?>"><img id="v" name="v" src="uploads/<?php echo $row['slikaK'] ?>" width = 90 height = 90 alt="image" >                    </button>                      
+<div id="message<?php echo $row['id'];?>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+            <img id="v" name="v" src="uploads/<?php echo $row['slikaK'] ?>" width = 90 height = 90 alt="image" >                    
+                <?php echo $row['id'];?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+https://www.youtube.com/watch?v=X0tOpBuYasI
+
+https://www.youtube.com/watch?v=kGDgeR83pJU
+
+https://www.youtube.com/watch?v=PF60DwefNpM
+
+https://www.youtube.com/watch?v=yeqARWqjkps
+
+https://www.youtube.com/watch?v=mXwkPQSvUXA
+
+https://www.youtube.com/channel/UCqXjCZT61LwF4L5lFUjYSHw/videos
+
+<?php
+include('../config/app.php');
+include('../controllers/AuthenticationController.php');
+include_once('codes/authentication.php');
+
+$authenticated = new AuthenticationController;
+//$authenticated->admin();
+include_once('controllers/HouseController.php');
+include_once('controllers/SeeController.php');
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+    <?php include("../imports/header.php"); ?>
+    <?php include("../imports/nav.php"); ?>
+
+<body>
+<div class="py-5">
+    
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <?php include('../message.php'); ?>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Pregled kuce</h4>
+                    </div>
+                    <div class="card-body">
+                    
+                        <?php
+                            $houseId = validateInput($db->conn, $_GET['id']);
+                            $house1 = new HouseController;
+                            $result1 = $house1->edit($houseId);
+                            $players = new SeeController;
+                            $result = $players->asd($houseId);
+                            if($result) {
+                                if($result1) {
+                                ?>
+                                <img src="uploads/<?= $result1['slika']; ?>" width = 150 height = 150 alt="image">    
+                                <div class="pb-3"></div>
+                                <?php
+                                
+                                foreach($result as $row){
+                                   ?>
+                                   
+                                  
+                                   <div class="row" id="gallery" data-toggle="modal" data-target="#exampleModal<?php echo $row['id'];?>">
+  <div class="col-12 col-sm-6 col-lg-3">
+    <img class="w-100" src="uploads/<?php echo $row['slikaK'] ?>" data-slide-to="0">
+  </div>
+  
+</div>
+
+<!-- Modal -->
+<!-- 
+This part is straight out of Bootstrap docs. Just a carousel inside a modal.
+-->
+<div class="modal fade" id="exampleModal<?php echo $row['id'];?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="carouselExample<?php echo $row['id'];?>" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExample<?php echo $row['id'];?>" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExample<?php echo $row['id'];?>" data-slide-to="1"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img id="v" name="v" src="uploads/<?php echo $row['slikaK'] ?>" width = 90 height = 90 alt="image" >   
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="uploads/<?php echo $row['slikaK'] ?>" alt="Second slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExample<?php echo $row['id'];?>" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExample<?php echo $row['id'];?>" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Custom Styling Toggle. For demo purposes only. -->
+<div class="switch-wrap">
+  <label class="switch">
+    <input type="checkbox" id="styleSwitch" onclick="switchStyle();">
+    <span class="slider round"></span>
+  </label>
+  <span class="switch-text">Toggle between <em>Bootstrap defaults</em> and <em>custom styling</em>.</span>
+</div>
+
+
+
+                                   
+
+
+
+
+
+                                        
+                                   <?php 
+                                } }
+                            } else {
+                                echo "Ova kuca ne poseduje detaljniji opis!";
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</body>
+<?php
+include("../imports/footer.php");
+?>
+<script>
+function switchStyle() {
+  if (document.getElementById('styleSwitch').checked) {
+    document.getElementById('gallery').classList.add("custom");
+    document.getElementById('exampleModal<?php echo $row['id'];?>').classList.add("custom");
+  } else {
+    document.getElementById('gallery').classList.remove("custom");
+    document.getElementById('exampleModal<?php echo $row['id'];?>').classList.remove("custom");
+  }
+}
+</script>
+</html>
+

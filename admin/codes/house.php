@@ -21,6 +21,7 @@ if(isset($_POST['update_house'])){
         'drzavaP' => validateInput($db->conn,$_POST['drzavaP']),
         'cenaP' => validateInput($db->conn,$_POST['cenaP']),
         'kvadraturaP' => validateInput($db->conn,$_POST['kvadraturaP']),
+        'opisP' => validateInput($db->conn,$_POST['opisP']),
         'house_image' => validateInput($db->conn,$_FILES['house_image']['name']),
         
     ];
@@ -35,8 +36,8 @@ if(isset($_POST['update_house'])){
             $filename = $_FILES['house_image']['name'];
             redirect ("Slika ".$filename." vec postoji!", "admin/edit-house.php?id=$id");
         } else {
-            $player = new HouseController;
-            $result = $player->update($inputData, $id);
+            $house = new HouseController;
+            $result = $house->update($inputData, $id);
             //echo $result;
             //exit();
             if($result) {
@@ -51,15 +52,15 @@ if(isset($_POST['update_house'])){
 
 }
 
-if(isset($_POST['save_player'])){
+if(isset($_POST['save_house'])){
     $inputData = [
-        'P' => validateInput($db->conn,$_POST['tipP']),
-        'kategorija' => validateInput($db->conn,$_POST['kategorijaP']),
-        'drzava' => validateInput($db->conn,$_POST['drzavaP']),
-        'cena' => validateInput($db->conn,$_POST['cenaP']),
-        'kvadratura' => validateInput($db->conn,$_POST['kvadraturaP']),
+        'tipP' => validateInput($db->conn,$_POST['tipP']),
+        'kategorijaP' => validateInput($db->conn,$_POST['kategorijaP']),
+        'drzavaP' => validateInput($db->conn,$_POST['drzavaP']),
+        'cenaP' => validateInput($db->conn,$_POST['cenaP']),
+        'kvadraturaP' => validateInput($db->conn,$_POST['kvadraturaP']),
         'house_image' => validateInput($db->conn,$_FILES['house_image']['name']),
-        'opis' => validateInput($db->conn,$_POST['opisP']),
+        'opisP' => validateInput($db->conn,$_POST['opisP']),
     ];
 
     $house = new HouseController;

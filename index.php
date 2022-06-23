@@ -7,6 +7,7 @@
 include('config/app.php');
 include('codes/authentication_code.php');
 include_once('controllers/SearchController.php');
+include_once('controllers/FilterController.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +97,8 @@ include_once('controllers/SearchController.php');
                     </div>
                     <div class="col-sm pt-2 pb-5">
                         <label for="prodaja"></label><br>
-                        <input type="submit" class="btn btn-warning w-100" name="submit">
+                        <!-- <input type="submit" class="btn btn-warning w-100" name="submit"> -->
+                        <button type="submit" name="filter_btn" class="btn btn-warning w-100">Pretrazi</button> 
                     </div>
                     
                 </div>
@@ -107,61 +109,10 @@ include_once('controllers/SearchController.php');
 
 
         <?php include_once('codes/search.php'); ?>
-
+        <?php include_once('codes/filter.php'); ?>
     </div>
+
     
-
-
-<?php
-
-$host = "localhost:3307";
-$user = "root";
-$password = "";
-$db = "nekretnine";
-// Create connection
-$data = mysqli_connect($host, $user, $password, $db);
-// Check connection
-if($data===false){
-    die("Konekcija nije uspela: " . connection_aborted);
-}
-
-if (isset($_POST["submit"])) {
-    //error_reporting(0);
-    $tip = $_POST["tipNek"];
-    $minCena = $_POST["cenaMin"];
-    $maxCena = $_POST["cenaMax"];
-    $drzava = $_POST["drzavaNek"];
-    $kategorijaK = $_POST["kategorijaNek"];
-    $kvadraturaMin = $_POST["kvadraturaMin"];
-    $kvadraturaMax = $_POST["kvadraturaMax"];
-
-    //$sql = "SELECT * FROM nekretnina_prodaja WHERE tip='$tip' AND drzava='$drzava' AND minCena BETWEEN $minCena AND $maxCena";
-    $sql = "SELECT * FROM houses WHERE tip='$tip' AND kategorija='$kategorijaK' AND drzava='$drzava' AND cena BETWEEN $minCena AND $maxCena AND kvadratura BETWEEN $kvadraturaMin AND $kvadraturaMax";
-    
-    $result = mysqli_query($data,$sql);
-    ?>
-    <div class="container w-100 pt-5">
-    <?php
-            while($rows=mysqli_fetch_assoc($result)){
-        ?>
-        
-        <div class=" galaxy-fold-open-your-device pb-5">
-            <div class="card center1 " style="width: 18rem;">
-                <img class="card-img-top" src="admin/uploads/<?php echo $rows['slika'] ?>" alt="Card image cap">
-                <div class="card-body">
-                    
-                    <h5 class="card-title"><?php echo $rows['kategorija']; ?></h5>
-                    <p class="card-text"><?php echo $rows['opis']; ?></p>
-                    <a href="#" class="btn btn-primary">Pogledaj kucu</a>
-                </div>
-            </div>
-        </div>
-        <?php
-          }
-        ?>
-    <?php
-}
-?>
     </div>
     
 

@@ -7,8 +7,8 @@ class SeeController{
     }
     
     public function index(){
-        $playerQuery = "SELECT * FROM images";
-        $result = $this->conn->query($playerQuery);
+        $houseQuery = "SELECT * FROM images";
+        $result = $this->conn->query($houseQuery);
         if($result->num_rows > 0) {
             return $result;
         } else {
@@ -18,8 +18,8 @@ class SeeController{
 
     public function asd($id){
         $kucaId = validateInput($this->conn, $id);
-        $playerQuery = "SELECT * FROM images WHERE idKuce='$kucaId'";
-        $result = $this->conn->query($playerQuery);
+        $houseQuery = "SELECT * FROM images WHERE idKuce='$kucaId'";
+        $result = $this->conn->query($houseQuery);
         if($result->num_rows > 0) {
             return $result;
         } else {
@@ -31,9 +31,9 @@ class SeeController{
         $kucaId = validateInput($this->conn, $id);
         //echo $kucaId;
         //exit();
-        $playerQuery = "SELECT * FROM images WHERE idKuce='$kucaId'";
+        $houseQuery = "SELECT * FROM images WHERE idKuce='$kucaId'";
         
-        $result = $this->conn->query($playerQuery);
+        $result = $this->conn->query($houseQuery);
         if($result->num_rows > 0){
             while ($row = $result -> fetch_row()) {
             $data = $result->fetch_assoc();
@@ -45,8 +45,8 @@ class SeeController{
 
     public function edit($id){
         $houseId = validateInput($this->conn, $id);
-        $playerQuery = "SELECT * FROM houses WHERE id='$houseId' LIMIT 1";
-        $result = $this->conn->query($playerQuery);
+        $houseQuery = "SELECT * FROM houses WHERE id='$houseId' LIMIT 1";
+        $result = $this->conn->query($houseQuery);
         if($result->num_rows == 1){
             $data = $result->fetch_assoc();
             return $data;

@@ -40,7 +40,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                       <a class="dropdown-item" href="<?= base_url('admin/add-house.php') ?>">Dodaj kucu</a>
                       <a class="dropdown-item"  href="<?= base_url('admin/houses-list.php') ?>">Lista svih kuca</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="<?= base_url('admin/schedule-list.php') ?>">Lista zakazanih poseta</a>
                     </div>
                   </div>
 

@@ -1,13 +1,13 @@
 <?php
 
-class HouseController{
+class ScheduleController{
     public function __construct(){
         $db = new DatabaseConnection;
         $this->conn = $db->conn;
     }
     
     public function index(){
-        $houseQuery = "SELECT * FROM houses";
+        $houseQuery = "SELECT * FROM seehouse";
         $result = $this->conn->query($houseQuery);
         if($result->num_rows > 0) {
             return $result;
@@ -20,7 +20,7 @@ class HouseController{
         $data = "'" . implode ( "','", $inputData) . "'";
         //echo $data;
 
-        $houseQuery = "INSERT INTO houses(tip, kategorija, drzava, cena, kvadratura, slika, opis) VALUES ($data)";
+        $houseQuery = "INSERT INTO seehouse(houseId, name, surname, email, phone) VALUES ($data)";
         $result = $this->conn->query($houseQuery);
         if($result) {
             return true;
@@ -65,9 +65,9 @@ class HouseController{
     }
 
     public function delete($id) {
-        $houseId = validateInput($this->conn, $id);
-        $houseDeleteQuery = "DELETE FROM houses WHERE id='$houseId' LIMIT 1";
-        $result = $this->conn->query($houseDeleteQuery);
+        $scheduleId = validateInput($this->conn, $id);
+        $scheduleDeleteQuery = "DELETE FROM seehouse WHERE id='$scheduleId' LIMIT 1";
+        $result = $this->conn->query($scheduleDeleteQuery);
         if($result) {
             return true;
         } else {
