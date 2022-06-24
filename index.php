@@ -1,9 +1,5 @@
 <?php
-// https://www.nekretnine.rs/ 
-// https://zellwk.com/blog/how-to-write-mobile-first-css/ 
-// https://www.youtube.com/watch?v=-U5dEdWouDY 
-// https://www.youtube.com/c/FundaofWebITHindi/playlists
-// https://www.youtube.com/watch?v=Lvw5yf0L2GQ&list=PLGqfsP66ZtnwBtyWMA70GttxKeSb9xl2J
+
 include('config/app.php');
 include('codes/authentication_code.php');
 include_once('controllers/SearchController.php');

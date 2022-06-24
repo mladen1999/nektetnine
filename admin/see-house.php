@@ -1,9 +1,8 @@
 <?php
 include('../config/app.php');
-include('../controllers/AuthenticationController.php');
 include_once('codes/authentication.php');
 
-$authenticated = new AuthenticationController;
+
 //$authenticated->admin();
 include_once('controllers/HouseController.php');
 include_once('controllers/SeeController.php');

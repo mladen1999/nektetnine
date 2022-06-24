@@ -24,7 +24,7 @@ include_once('controllers/ScheduleController.php');
                 <?php include('message.php'); ?>
                 <div class="card">
                     <div class="card-header">
-                        <h4>Izmeni kucu</h4>
+                        <h4>Zakazi pregled</h4>
                     </div>
                     <div class="card-body">
 
@@ -38,8 +38,11 @@ include_once('controllers/ScheduleController.php');
                                 
                                     
                         <form action="codes/schedule.php" method="POST" enctype="multipart/form-data">
-                            <input type="text" name="houseId" value="<?=$result['id'];?>">
-
+                            
+                            <div class="mb-3">
+                                <label for="">ID nekretnine:</label>
+                                <input type="text" name="houseId" class="form-control" value="<?=$result['id'];?>" disabled/>
+                            </div>
                             <div class="mb-3">
                                 <label for="">Ime:</label>
                                 <input type="text" name="name" class="form-control" required />
