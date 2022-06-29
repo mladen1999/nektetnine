@@ -26,8 +26,8 @@ footer {
 .asd {
     background-color: red !important;
 }
-.carouselImages{
-    
+.divTwo {
+    margin-left: 5px;
 }
 
 .search-container button {
@@ -204,9 +204,9 @@ footer {
     }
     .divTwo {
         display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
     }
     
 }

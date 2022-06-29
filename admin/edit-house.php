@@ -73,6 +73,10 @@ include_once('controllers/HouseController.php');
                                 <label>Slika kuce:</label><br />
                                 <img src="uploads/<?= $result['slika']; ?>" width = 100 height = 100 alt="image">            
                             </div>
+                            <div class="mb-3 ml-3">
+                                <label>Dodajte jos slika:</label><br />
+                                <input type="file" name="more_house_image" class="form-control" multiple="multiple" accept="image/*">           
+                            </div>
                             <div class="mb-3">
                                 <button type="submit" name="update_house" class="btn btn-primary mr-5">Izmeni kucu</button>
 

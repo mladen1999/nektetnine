@@ -50,13 +50,15 @@ class HouseController{
         $kvadraturaP = $inputData['kvadraturaP'];
         $image = $inputData['house_image'];
         $opisP = $inputData['opisP'];
+        $more = $inputData['more_house_image'];
         $houseUpdateQuery = "UPDATE houses SET id='$houseId', tip='$tipP', kategorija='$kategorijaP', drzava='$drzavaP', cena='$cenaP', kvadratura='$kvadraturaP', slika='$image', opis='$opisP' WHERE id='$houseId' LIMIT 1";
-
+        $houseUpdateQuery1 = "INSERT INTO images(slikaK, idKuce) VALUES ('$more', '$houseId')";
+        
         //echo $houseUpdateQuery;
         //exit();
         $result = $this->conn->query($houseUpdateQuery);
-        
-        if($result) {
+        $result1 = $this->conn->query($houseUpdateQuery1);
+        if($result && $result1) {
             
             return true;
         } else {

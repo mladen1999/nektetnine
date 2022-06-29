@@ -23,7 +23,7 @@ if(isset($_POST['update_house'])){
         'kvadraturaP' => validateInput($db->conn,$_POST['kvadraturaP']),
         'opisP' => validateInput($db->conn,$_POST['opisP']),
         'house_image' => validateInput($db->conn,$_FILES['house_image']['name']),
-        
+        'more_house_image' => validateInput($db->conn,$_FILES['more_house_image']['name']),
     ];
     
     $allow_extension = array('gif', 'png', 'jpg', 'jpeg');
